@@ -1,0 +1,44 @@
+1. LEFT JOIN:
+A LEFT JOIN returns all records from the left table (in this case, the games table) and the matched records from the right table
+ (city table). If there is no match, the result is NULL on the side of the right table.
+
+ Example SQL Query for LEFT JOIN:
+ SELECT g.year, g.city, c.country
+ FROM games g
+ LEFT JOIN city c
+ ON g.city = c.name;
+
+ Explanation:
+ This query will return all rows from the games table, even if there is no corresponding match in the city table.
+ For example, if there is a year in the games table with a city that is not present in the city table
+ (like the year 2032 with an empty city), the result for the country will be NULL.
+
+ Result of LEFT JOIN:
+ year	city	country
+ 2004	Athens	Greece
+ 2008	Beijing	China
+ 2012	London	UK
+ 2032	NULL	NULL
+
+
+ 2. RIGHT JOIN:
+ A RIGHT JOIN returns all records from the right table (city table) and the matched records from the left table (games table).
+ If there is no match, the result is NULL on the side of the left table.
+
+ Example SQL Query for RIGHT JOIN:
+ SELECT g.year, g.city, c.country
+ FROM games g
+ RIGHT JOIN city c
+ ON g.city = c.name;
+
+Explanation:
+This query will return all rows from the city table, even if there is no corresponding match in the games table.
+For example, if there is a city in the city table that is not present in the games table (like Sydney),
+the result for the year will be NULL.
+
+Result of RIGHT JOIN:
+year	city	country
+NULL	Sydney	Australia
+2004	Athens	Greece
+2008	Beijing	China
+2012	London	UK
