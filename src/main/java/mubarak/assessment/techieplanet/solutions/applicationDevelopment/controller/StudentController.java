@@ -8,13 +8,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import mubarak.assessment.techieplanet.solutions.applicationDevelopment.dto.ResponseObject;
 import mubarak.assessment.techieplanet.solutions.applicationDevelopment.dto.StudentDto;
-import mubarak.assessment.techieplanet.solutions.applicationDevelopment.dto.StudentReportDto;
-import mubarak.assessment.techieplanet.solutions.applicationDevelopment.model.Student;
 import mubarak.assessment.techieplanet.solutions.applicationDevelopment.service.StudentServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -49,9 +47,8 @@ public class StudentController {
             return ResponseEntity.badRequest().body(errors);
         }
 
-        Student savedStudent = studentService.saveStudent(studentDto);
-        logger.info("Student created with ID: {}", savedStudent.getId());
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedStudent);
+        ResponseObject<Object> savedStudent = studentService.createStudent(studentDto);
+        return ResponseEntity.ok(savedStudent);
     }
 
     @Operation(summary = "Get student report")
@@ -59,9 +56,9 @@ public class StudentController {
             @ApiResponse(responseCode = "200", description = "Report retrieved successfully"),
             @ApiResponse(responseCode = "404", description = "Student not found")
     })
-    @GetMapping("/{id}/report")
-    public ResponseEntity<StudentReportDto> getStudentReport(@PathVariable Long id) {
-        StudentReportDto report = studentService.getStudentReport(id);
+    @GetMapping("report")
+    public ResponseEntity<Object> getStudentReport(@RequestParam(name = "id") Long id) {
+        ResponseObject<Object> report = studentService.getStudentReport(id);
         return ResponseEntity.ok(report);
     }
 }
