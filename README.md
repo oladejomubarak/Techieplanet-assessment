@@ -81,8 +81,8 @@ Below is the API request and response sample:
 - Request Body: JSON object with three properties: firstName, lastName and subjectScores.
 - Example Request Body:
   {
-  "firstName": "John",
-  "lastName": "Doe",
+  "firstName": "Mubarak",
+  "lastName": "Techplanet",
   "subjectScores": {
   "Mathematics": 85,
   "English": 90,
