@@ -36,7 +36,6 @@ public class StudentServiceImpl implements StudentService{
     public ResponseObject<Object> createStudent(StudentDto studentDto) {
         logger.debug("Saving student: {}", studentDto);
 
-        // Validate if exactly five subject scores are provided
         if (studentDto.getSubjectScores().size() != 5) {
             throw new BadRequestException("Five subject scores are required");
         }
