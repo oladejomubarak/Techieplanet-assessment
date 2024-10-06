@@ -21,6 +21,7 @@ These instructions will help you set up and run the project on your local machin
 
 - **Java 17** or later
 - **Maven** (for building the project)
+- **Mysql Database** (for saving and retrieving data)
 - **Docker** (optional, for containerized deployment)
 - **Postman** or **cURL** (for testing APIs)
 - **Git** (for version control)
@@ -37,11 +38,11 @@ git clone https://github.com/oladejomubarak/Techieplanet-assessment.git
 Navigate to the project directory and install the necessary dependencies using Maven:
 
 Windows (Run the following commands on your terminal):
-- cd techieplanet
+- cd techieplanet-assessment
 - mvn clean install
 
 macOS/Linux (Run the following commands on your terminal):
-- cd techieplanet
+- cd techieplanet-assessment
 - ./mvnw clean install
 
 Make sure your system is connected to the internet as Maven will download required dependencies.
@@ -56,7 +57,8 @@ macOS/Linux:
 - ./mvnw spring-boot:run
 
 You can also run the Student Score Report Backend using popular Integrated Development Environments (IDEs) like IntelliJ IDEA and Eclipse.
-
+Also supply valid username and password for Database connection. 
+Note: mysql Database was used for this project.
 The application will start locally on port 8080.
 
 ## Testing
